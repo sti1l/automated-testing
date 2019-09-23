@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="-">
+	<listeners>
+		<!-- <listener class-name="com.realz.listener.TestngRetryListener" />
+		<listener class-name="com.realz.listener.RetryListener" /> -->
+	</listeners>
+    <suite-files>
+        <suite-file path="baiduTestNG.xml"></suite-file>
+        <suite-file path="qqEmailTestNG.xml"></suite-file>
+    </suite-files>
+</suite>
+
+
+<!-- 
+
+suite属性说明：
+@name: suite的名称，必须参数    
+@junit：是否以Junit模式运行，可选值(true | false)，默认"false"
+@verbose：命令行信息打印等级，不会影响测试报告输出内容；可选值(1|2|3|4|5) 
+@parallel：是否多线程并发运行测试；可选值(false | methods | tests | classes | instances)，默认 "false"
+@thread-count：当为并发执行时的线程池数量，默认为"5"
+@configfailurepolicy：一旦Before/After Class/Methods这些方法失败后，是继续执行测试还是跳过测试；可选值 (skip | continue)，默认"skip"
+@annotations：获取注解的位置，如果为"javadoc", 则使用javadoc注解，否则使用jdk注解
+@time-out：为具体执行单元设定一个超时时间，具体参照parallel的执行单元设置；单位为毫秒
+@skipfailedinvocationcounts：是否跳过失败的调用，可选值(true | false)，默认"false"
+@data-provider-thread-count：并发执行时data-provider的线程池数量，默认为"10"
+@object-factory：一个实现IObjectFactory接口的类，用来实例测试对象
+@allow-return-values：是否允许返回函数值，可选值(true | false)，默认"false"
+@preserve-order：顺序执行开关，可选值(true | false) "true"
+@group-by-instances：是否按实例分组，可选值(true | false) "false"
+
+test属性说明：
+@name：test的名字，必选参数；测试报告中会有体现
+@junit：是否以Junit模式运行，可选值(true | false)，默认"false"
+@verbose：命令行信息打印等级，不会影响测试报告输出内容；可选值(1|2|3|4|5) 
+@parallel：是否多线程并发运行测试；可选值(false | methods | tests | classes | instances)，默认 "false"
+@thread-count：当为并发执行时的线程池数量，默认为"5"
+@annotations：获取注解的位置，如果为"javadoc", 则使用javadoc注解，否则使用jdk5注解
+@time-out：为具体执行单元设定一个超时时间，具体参照parallel的执行单元设置；单位为毫秒
+@enabled：设置当前test是否生效，可选值(true | false)，默认"true" 
+@skipfailedinvocationcounts：是否跳过失败的调用，可选值(true | false)，默认"false"
+@preserve-order：顺序执行开关，可选值(true | false) "true"
+@group-by-instances：是否按实例分组，可选值(true | false) "false"
+@allow-return-values：是否允许返回函数值，可选值(true | false)，默认"false"
+
+ -->

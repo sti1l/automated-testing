@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="QQ邮箱">
+	<test name="邮箱登录" preserve-order="true"> <!-- preserve-order为true，表示<test>下所有<classes>按照顺序执行 -->
+		<classes>
+			<class name="com.realz.test.QqEmailTestNg"></class>
+			<!-- 可以添加多个class -->
+		</classes>
+	</test>
+</suite>
