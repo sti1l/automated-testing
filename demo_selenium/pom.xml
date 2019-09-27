@@ -50,7 +50,7 @@
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
 		</dependency>
-		
+
 		<!-- mail -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -126,6 +126,25 @@
 					<!-- <forkMode>always</forkMode> -->
 				</configuration>
 			</plugin>
+			<!-- 自动调用java类主方法插件 介绍：https://www.jianshu.com/p/ad83c9d53ec4 -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<includePluginDependencies>true</includePluginDependencies>
+							<mainClass>com.realz.util.SendReportToEmailUtil</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
 		</plugins>
 	</build>
 

@@ -24,7 +24,7 @@ public class ScreenShotUtil {
 		this.driver = driver;
 	}
 
-	public static final String SCREEN_SHOT_PATH = "test-output/screen-shot"; // 截图目录
+	public static final String SCREEN_SHOT_PATH = "screen-shot"; // 截图目录
 
 	/**
 	 * 截图

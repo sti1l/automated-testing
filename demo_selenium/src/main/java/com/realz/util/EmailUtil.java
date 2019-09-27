@@ -1,7 +1,5 @@
 package com.realz.util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
@@ -22,49 +20,26 @@ import javax.mail.internet.MimeUtility;
 
 public class EmailUtil {
 
-	private static String defaultSenderName = "";// 默认的发件人用户名，defaultEntity用得到  
-	private static String defaultSenderPass = "";// 默认的发件人密码，defaultEntity用得到  
-	private static String defaultSmtpHost = "";// 默认的邮件服务器地址，defaultEntity用得到
+	private static String defaultSenderName = "";	// 默认的发件人用户名，defaultEntity用得到  
+	private static String defaultSenderPass = "";	// 默认的发件人密码，defaultEntity用得到  
+	private static String defaultSmtpHost = "";		// 默认的邮件服务器地址，defaultEntity用得到
 
-	private String smtpHost; // 邮件服务器地址  
-	private String sendUserName; // 发件人的用户名  
-	private String sendUserPass; // 发件人密码  
-
-	private MimeMessage mimeMsg; // 邮件对象  
+	private String smtpHost; 						// 邮件服务器地址  
+	private String sendUserName; 					// 发件人的用户名  
+	private String sendUserPass; 					// 发件人密码  
+	private MimeMessage mimeMsg; 					// 邮件对象  
+	private Multipart mp;							// 附件添加的组件  
+	private List<FileDataSource> files = new LinkedList<FileDataSource>();// 存放附件文件  
 	private Session session;
 	private Properties props;
-	private Multipart mp;// 附件添加的组件  
-	private List<FileDataSource> files = new LinkedList<FileDataSource>();// 存放附件文件  
 
-	public static void sendEmail() {
-
-		String userName = ""; // 发件人邮箱  
-		String password = ""; // 发件人密码  
-		String smtpHost = ""; // 邮件服务器    
-		String to = ""; // 收件人，多个收件人以半角逗号分隔  
-		String cc = ""; // 抄送，多个抄送以半角逗号分隔  
-		String subject = ""; // 主题
-		String body = "";// GenerateReport.returnResult(); // 正文，可以用html格式的哟  
-		// 附件的路径，多个附件也不怕  
-		List<String> ReportPath = null;// Arrays.asList(GenerateReport.returnReportPath());	// 附件路径
-		List<String> screenshotPath = null;// GenerateReport.returnScreenshotPath(); // 截屏
-		List<String> attachments = new ArrayList<String>();
-		attachments.addAll(ReportPath);
-		attachments.addAll(screenshotPath);
-		EmailUtil email = EmailUtil.entity(smtpHost, userName, password, to, cc, subject, body, attachments);
-		try {
-			email.send();// 发送
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	/**
 	 * 发送邮件
 	 * @return
 	 * @throws MessagingException
 	 */
-	private boolean send() throws MessagingException {
+	public boolean send() throws MessagingException {
 		mimeMsg.setContent(mp);  
         mimeMsg.saveChanges();  
         System.out.println("正在发送邮件....");  
@@ -79,7 +54,7 @@ public class EmailUtil {
 	}
 	
 	// 构造方式私有
-	private EmailUtil(String smtpHost2, String sendUserName2, String sendUserPass2, String to, String cc,
+	private EmailUtil(String smtpHost, String sendUserName, String sendUserPass, String to, String cc,
 			String mailSubject, String mailBody, List<String> attachments) {
 		this.smtpHost = smtpHost;
 		this.sendUserName = sendUserName;
@@ -102,7 +77,7 @@ public class EmailUtil {
 			props = System.getProperties();
 		}
 		props.put("mail.smtp.host", smtpHost);
-		props.put("mail.smtp.auth", "true"); // 需要身份验证  
+		props.put("mail.smtp.auth", "true"); // 需要身份验证 
 		session = Session.getDefaultInstance(props, null);
 		// 置true可以在控制台（console)上看到发送邮件的过程
 		session.setDebug(true);
@@ -114,10 +89,10 @@ public class EmailUtil {
 	
 	/**
 	 * 初始化参数
-	 * @param smtpHost
-	 * @param sendUserName
-	 * @param sendUserPass
-	 * @param to
+	 * @param smtpHost		邮件服务器地址
+	 * @param sendUserName	发件人用户名
+	 * @param sendUserPass	发件人密码
+	 * @param to			
 	 * @param cc
 	 * @param mailSubject
 	 * @param mailBody

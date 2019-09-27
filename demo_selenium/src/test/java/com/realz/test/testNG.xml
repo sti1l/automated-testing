@@ -2,13 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 
-<suite name="-">
+<suite name="-" preserve-order="true"> <!-- preserve-order="true" 开启引入的模块按顺序执行 -->
 	<listeners>
-		<!-- <listener class-name="com.realz.listener.TestngRetryListener" />
-		<listener class-name="com.realz.listener.RetryListener" /> -->
+		<listener class-name="com.realz.listener.MyAnnotationTransformer" />
+		<listener class-name="com.realz.listener.MyTestListener" />
+		<!-- <listener class-name="com.realz.listener.MySuiteListener" /> -->
+		<!-- <listener class-name="com.realz.listener.MyInvokedMethodListener" /> -->
 	</listeners>
     <suite-files>
-        <suite-file path="baiduTestNG.xml"></suite-file>
+    	<!-- <suite-file path="baiduTestNG.xml"></suite-file> -->
         <suite-file path="qqEmailTestNG.xml"></suite-file>
     </suite-files>
 </suite>

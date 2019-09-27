@@ -1,6 +1,5 @@
 package com.realz.test;
 
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -8,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.realz.base.BaseTestNG;
 import com.realz.page.BaiduPage;
+import com.realz.util.WebDriverFactory;
 
 /**
  * 百度搜索测试用例
@@ -20,7 +20,7 @@ public class BaiduTestNg extends BaseTestNG {
 	@BeforeClass // @BeforeSuite->@BeforeTest->@BeforeClass->{@BeforeMethod->@Test->@AfterMethod}->@AfterClass->@AfterTest->@AfterSuite
 					// 其中{}内的与多少个@Test，就循环执行多少次。
 	public void open() {
-		driver = new ChromeDriver();
+		driver = WebDriverFactory.getDriver();
 	}
 
 	@Test(priority = 1) // priority 指定方法的执行顺序，数值越小，越靠前执行
@@ -45,6 +45,6 @@ public class BaiduTestNg extends BaseTestNG {
 
 	@AfterClass
 	public void close() {
-		// driver.close();
+		driver.close();
 	}
 }
