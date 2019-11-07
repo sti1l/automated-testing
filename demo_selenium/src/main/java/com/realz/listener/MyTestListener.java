@@ -1,5 +1,7 @@
 package com.realz.listener;
 
+import java.io.IOException;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -35,7 +37,7 @@ public class MyTestListener implements ITestListener {
 			// 截图
 			ssu.takeScreenShot();
 			// 关闭浏览器
-			instance.driver.quit();
+			instance.driver.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,9 +46,19 @@ public class MyTestListener implements ITestListener {
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		// 重试自动退出浏览器
-		BaseTestNG instance = (BaseTestNG) result.getInstance();
-		instance.driver.close();
+		
+		try {
+			// 重试自动退出浏览器
+			BaseTestNG instance = (BaseTestNG) result.getInstance();
+			ScreenShotUtil ssu = new ScreenShotUtil(instance.driver);
+			// 截图
+			ssu.takeScreenShot();
+			// 关闭浏览器
+			instance.driver.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

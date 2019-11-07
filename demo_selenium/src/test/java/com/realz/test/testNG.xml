@@ -10,7 +10,7 @@
 		<!-- <listener class-name="com.realz.listener.MyInvokedMethodListener" /> -->
 	</listeners>
     <suite-files>
-    	<!-- <suite-file path="baiduTestNG.xml"></suite-file> -->
+    	<suite-file path="baiduTestNG.xml"></suite-file>
         <suite-file path="qqEmailTestNG.xml"></suite-file>
     </suite-files>
 </suite>

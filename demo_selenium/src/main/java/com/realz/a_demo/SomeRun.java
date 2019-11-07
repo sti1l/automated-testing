@@ -1,7 +1,6 @@
 package com.realz.a_demo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -11,14 +10,6 @@ import com.realz.util.EmailUtil;
 public class SomeRun {
 
 	public static void main(String[] args) {
-		// ZipUtil.delete("target/surefire-reports/surefire-reports.zip");
-		// ZipUtil.zipFile("target/surefire-reports",
-		// "target/surefire-reports/surefire-reports.zip");
-		/*
-		 * EmailUtil.entity(smtpHost, sendUserName, sendUserPass, to, cc, mailSubject,
-		 * mailBody, attachments); EmailUtil.sendEmail();
-		 */
-
 		sendEmail();
 	}
 
@@ -36,9 +27,6 @@ public class SomeRun {
 		List<String> attachments = new ArrayList<String>();
 		
 		attachments.add(ReportPath); 
-		
-		//attachments.add(screenshotPath);
-		 
 
 		EmailUtil email = EmailUtil.entity(smtpHost, userName, password, to, cc, subject, body, attachments);
 		try {

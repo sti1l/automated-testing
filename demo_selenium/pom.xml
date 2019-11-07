@@ -127,7 +127,8 @@
 				</configuration>
 			</plugin>
 			<!-- 自动调用java类主方法插件 介绍：https://www.jianshu.com/p/ad83c9d53ec4 -->
-			<plugin>
+			<!-- 用例执行失败后, 使用该插件执行不了发送邮件方法, 故改方式先作废, 后续采用jenkins集成的方式发送邮件 -->
+			<!-- <plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<executions>
@@ -142,7 +143,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 
 
 		</plugins>
