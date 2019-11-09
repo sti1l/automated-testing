@@ -11,8 +11,11 @@
 	</listeners>
     <suite-files>
     	<!-- <suite-file path="baiduTestNG.xml"></suite-file> -->
-       <!--  <suite-file path="qqEmailTestNG.xml"></suite-file> -->
-        <suite-file path = "mars/loginTestNG.xml"></suite-file>
+       	<!--  <suite-file path="qqEmailTestNG.xml"></suite-file> -->
+       	<!-- 登录 -->
+       <!--  <suite-file path = "mars/loginTestNG.xml"></suite-file> -->
+        
+        <suite-file path = "mars/ActivityTestNG.xml"></suite-file>
     </suite-files>
 </suite>
 
