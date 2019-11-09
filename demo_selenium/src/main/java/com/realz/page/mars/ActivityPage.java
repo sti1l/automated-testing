@@ -70,12 +70,16 @@ public class ActivityPage extends BasePage {
 	private WebElement spz_element;
 
 	// 复制
-	@FindBy(xpath = "//*[@id=\"LAY_app_body\"]/div/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/div[2]/table/tbody/tr[2]/td/div/a[3]")
+	@FindBy(xpath = "//*[@id=\"LAY_app_body\"]/div/div/div[2]/div[2]/div/div/div[2]/div/div[1]/div[4]/div[2]/table/tbody/tr[1]/td/div/a[3]")
 	private WebElement copy_element;
 
 	// 活动名称输入框
 	@FindBy(id = "inputActivityName")
 	private WebElement inputActivityName_element;
+	
+	// 关闭按钮
+	@FindBy(id = "btnClose")
+	private WebElement btnClose_element;
 
 	// 点击活动计划列表连接
 	public void activity_plan_list_click() {
@@ -103,12 +107,15 @@ public class ActivityPage extends BasePage {
 	}
 
 	// 活动名称输入框内容获取
+	// 这里注意，输入框元素中的值的获取不能用getText()
 	public String get_inputActivityName() {
-		return this.getText(inputActivityName_element);
+		return this.getAttribute(inputActivityName_element);
+	}
+	
+	// 点击关闭按钮
+	public void btnClose_click() {
+		this.click(btnClose_element);
 	}
 
-	public String get_activity_plan_list() {
-		return this.getText(activity_plan_list_element);
-	}
 
 }

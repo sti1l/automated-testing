@@ -55,5 +55,14 @@ public class BasePage {
 		new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOf(element)); // 加入显式等待
 		return element.getText();
 	}
+	
+	/**
+	 * 重写getAttribute方法
+	 * @param element
+	 */
+	public String getAttribute(WebElement element) {
+		new WebDriverWait(driver, timeOut).until(ExpectedConditions.visibilityOf(element)); // 加入显式等待
+		return element.getAttribute("value");
+	}
 
 }

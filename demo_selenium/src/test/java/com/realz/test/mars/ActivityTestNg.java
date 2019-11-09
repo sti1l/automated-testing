@@ -40,21 +40,48 @@ public class ActivityTestNg extends BaseTestNG {
 			// 点击登录
 			myPage.login_btn_click();
 			
+			Thread.sleep(500);
 			// 点击活动计划
 			myPage.activity_plan_click();
+			Thread.sleep(500);
 			// 点击活动计划列表
 			myPage.activity_plan_list_click();
+			
+			Thread.sleep(1000);
+			
 			// 点击审批中
 			myPage.spz_click();
-			// 点击复制活动
-			myPage.copy_activity_click();
-				
-			// 跳转拷贝活动frame
-			driver.switchTo().frame("layui-layer-iframe12");
 			
-			// 获取活动名称中文本内容
-			myPage.inputActivityName_sendkeys("1111");
-			//System.err.println("活动名称: " + activityName);
+			int j = 0;
+			
+			for (int i = 0; i < 10; i++) {
+				
+				Thread.sleep(1000);
+			
+				// 点击复制活动
+				myPage.copy_activity_click();
+				
+				Thread.sleep(1000);
+				
+				// iframe 动态id构造
+				j = 12 + i;
+				
+				// 跳转拷贝活动frame
+				driver.switchTo().frame("layui-layer-iframe" + j);
+				
+				// 获取活动名称中文本内容
+				String inputActivityName = myPage.get_inputActivityName();
+				
+				System.err.println("realz: 活动名称-》" + inputActivityName);
+				
+				// 加流水填充
+				myPage.inputActivityName_sendkeys(inputActivityName + i);
+				
+				// 点击提交
+				// - 先点击关闭
+				myPage.btnClose_click();
+			}
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
