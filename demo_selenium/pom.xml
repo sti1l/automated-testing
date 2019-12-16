@@ -31,13 +31,13 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Selenium -->
+		<!-- Selenium jar -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 		</dependency>
 
-		<!-- testng -->
+		<!-- testng 框架-->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>

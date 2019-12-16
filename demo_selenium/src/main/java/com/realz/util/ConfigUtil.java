@@ -38,7 +38,7 @@ public class ConfigUtil {
 	 * @param key
 	 * @return
 	 */
-	public static String getString(String key) {
+	public static String getString(String key) { 
 		return p.getProperty(key);
 	}
 
