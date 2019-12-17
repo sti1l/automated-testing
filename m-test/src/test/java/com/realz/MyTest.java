@@ -46,6 +46,10 @@ public class MyTest {
 	public void commonSelenuimApi() throws InterruptedException {
 
 		driver.get("http://baidu.com");
+		
+		/**
+		 * 1. 等待的三种形式
+		 */
 		// 强制线程休眠
 		// 等待3秒
 		// Thread.sleep(3000);
@@ -57,29 +61,35 @@ public class MyTest {
 		// new
 		// WebDriverWait(driver,10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("kw1")));
 		// driver.findElement(By.id("kw")).sendKeys("Realz是什么样的人?");
-
-//		driver.manage().window().maximize();
-
+		
+		
+		
+		
+		/**
+		 * 2. 元素获取
+		 */
+		// 通过id 略
+		
 		// 通过name 获得元素
-//		driver.findElement(By.name("wd")).sendKeys("111");;
-//		// 通过标签名
-//		driver.findElement(By.tagName("body")).sendKeys(Keys.F11);
-//		// 通过xpath
-//		driver.findElement(By.xpath(null));
+		//driver.findElement(By.name("wd")).sendKeys("111");
+		
+		// 通过标签名 注:这个我没测通
+		//driver.findElement(By.tagName("body")).sendKeys(Keys.F11);
+		
+		// 通过xpath 略
+		
 		// 通过文本
 		// driver.findElement(By.linkText("百度首页")).click();
+		
 		// 通过模糊文本,不需要精确,精确也行.
 		// driver.findElement(By.partialLinkText("首页")).click();
 
 		driver.findElement(By.name("wd")).getText();
-
 	}
 
 	/**
 	 * 下拉列表
-	 * 
 	 * @param args
-	 * @throws InterruptedException
 	 */
 	public static void main1(String[] args) {
 
@@ -89,14 +99,20 @@ public class MyTest {
 		driver.get("https://www.ctrip.com/?sid=155952&allianceid=4897&ouid=index");
 
 		Select select_J_roomCountList = new Select(driver.findElement(By.id("J_roomCountList")));// 实例化 Select
-		// 选择 列
+		/**
+		 * 1. 选择 列
+		 */
 		// 通过为止 从0开始
 		select_J_roomCountList.selectByIndex(2);
 		// 通过 value
 		select_J_roomCountList.selectByValue("1");
 		// 通过 内容
 		select_J_roomCountList.selectByVisibleText("3间");
-
+		
+		
+		/**
+		 * 2. 取消 列
+		 */
 		// 取消 列 这个我没测试通, 也没太纠结, 开发用的少. 我们直接选中要选择的就好了.
 		// 通过为止 从0开始
 		// select_J_roomCountList.deselectByIndex(3);
@@ -106,7 +122,11 @@ public class MyTest {
 		// select_J_roomCountList.deselectByVisibleText("3间");
 		// 取消全部
 		// select_J_roomCountList.deselectAll();
-
+		
+		
+		/**
+		 * 3. 获取列 内容
+		 */
 		System.err.println("----------------------- 全部列表 --------------------------");
 		// 获取全部下拉列表
 		List<WebElement> options = select_J_roomCountList.getOptions();
@@ -130,9 +150,8 @@ public class MyTest {
 	/**
 	 * 滑动滚动条
 	 * @param args
-	 * @throws InterruptedException 
 	 */
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		WebDriver driver = new ChromeDriver();
 		// 携程旅游作为案例
 		driver.get("https://jqueryui.com/slider/");
