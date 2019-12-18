@@ -10,6 +10,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+/**
+ * selenium 常用的 api 参考地址 :
+ * 	https://www.jianshu.com/p/dc1104ea1fa5
+ * @author sti1l
+ *
+ */
 public class MyTest {
 
 	// 获取谷歌驱动 - > 父类引用指向子类对象 : WebDirver 是 谷歌,火狐,ie等浏览器驱动 实现的接口
@@ -151,7 +157,7 @@ public class MyTest {
 	 * 滑动滚动条
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main2(String[] args) {
 		WebDriver driver = new ChromeDriver();
 		// 携程旅游作为案例
 		driver.get("https://jqueryui.com/slider/");
@@ -163,5 +169,44 @@ public class MyTest {
 		Actions actions = new Actions(driver);
 		
 		actions.dragAndDropBy(nextPageElement, 100, 0).perform();
+	}
+	
+	/**
+	 * 八大定位器
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.baidu.com");
+		/**
+		 * 不同方式获取元素：百度搜索输入框。
+		 * 因为目前输入框中的value为空，测试时输出value看不出效果，我们改为输出元素的name属性wd
+		 * 如果能正常的输出，则说明，元素定位成功。
+		 */
+		// 1.id定位
+		System.err.println(driver.findElement(By.id("kw")).getAttribute("name"));
+		// 2.name定位 		输出元素class属性
+		System.err.println(driver.findElement(By.name("wd")).getAttribute("class"));
+		// 3.className定位 输出元素name属性
+		System.err.println(driver.findElement(By.className("s_ipt")).getAttribute("name"));
+		// 4.class定位 	输出元素name属性
+		System.err.println(driver.findElement(By.cssSelector("#kw")).getAttribute("name"));
+		// 5.xpath定位		输出元素name属性 
+		System.err.println(driver.findElement(By.xpath("//*[@id=\"kw\"]")).getAttribute("name"));
+		// 6.tagName定位	输出元素name属性 
+		System.err.println(driver.findElement(By.tagName("form")).getAttribute("name"));
+		
+		System.err.println("-----除了第二个是输出的class值，其余的都是name值，说明测试成功-----");
+		
+		/**
+		 * 获取新闻链接
+		 * 输出href值
+		 */
+		// 7.linkText定位
+		System.err.println(driver.findElement(By.linkText("新闻")).getAttribute("href"));
+		// 7.partialLinkText定位
+		System.err.println(driver.findElement(By.partialLinkText("闻")).getAttribute("href"));
+		
 	}
 }
